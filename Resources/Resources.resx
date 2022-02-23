@@ -1,0 +1,659 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About" xml:space="preserve">
+    <value>WeekNumber Lite by Voltura AB
+
+Copyright © Voltura AB 2022</value>
+    <comment>About box text</comment>
+  </data>
+  <data name="AboutMenu" xml:space="preserve">
+    <value>About WeekNumber Lite</value>
+  </data>
+  <data name="ApplicationLog" xml:space="preserve">
+    <value>ApplicationLog</value>
+  </data>
+  <data name="ApplicationLogMenu" xml:space="preserve">
+    <value>Application log</value>
+  </data>
+  <data name="AutoUpdate" xml:space="preserve">
+    <value>AutoUpdate</value>
+    <comment>Setting, do not change</comment>
+  </data>
+  <data name="AutoUpdateMenu" xml:space="preserve">
+    <value>Update automatically</value>
+  </data>
+  <data name="AvailableVersion" xml:space="preserve">
+    <value>New version:</value>
+  </data>
+  <data name="Blue" xml:space="preserve">
+    <value>Blue</value>
+    <comment>Setting, do not change</comment>
+  </data>
+  <data name="IconBackground" xml:space="preserve">
+    <value>IconBackground</value>
+    <comment>Setting, do not change</comment>
+  </data>
+  <data name="IconBackgroundBlue" xml:space="preserve">
+    <value>IconBackgroundBlue</value>
+    <comment>Setting, do not change</comment>
+  </data>
+  <data name="IconBackgroundGreen" xml:space="preserve">
+    <value>IconBackgroundGreen</value>
+    <comment>Setting, do not change</comment>
+  </data>
+  <data name="IconBackgroundMenu" xml:space="preserve">
+    <value>Background</value>
+  </data>
+  <data name="IconBackgroundRed" xml:space="preserve">
+    <value>IconBackgroundRed</value>
+    <comment>Setting, do not change</comment>
+  </data>
+  <data name="CalendarWeekRuleMenu" xml:space="preserve">
+    <value>Calendar week rule</value>
+  </data>
+  <data name="CheckBrowserNavigation" xml:space="preserve">
+    <value>Check if you can navigate via a web browser to this address:</value>
+  </data>
+  <data name="CheckForNewVersionHere" xml:space="preserve">
+    <value>Manually check for newer version here:</value>
+  </data>
+  <data name="CheckForNewVersionMenu" xml:space="preserve">
+    <value>Check for updated version</value>
+  </data>
+  <data name="CheckWeekForDateMenu" xml:space="preserve">
+    <value>Get week number for date...</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="ColorsMenu" xml:space="preserve">
+    <value>Icon colors</value>
+  </data>
+  <data name="Day" xml:space="preserve">
+    <value>Day</value>
+  </data>
+  <data name="DisplayStartupNotification" xml:space="preserve">
+    <value>DisplayStartupNotification</value>
+    <comment>Setting, do not change</comment>
+  </data>
+  <data name="DisplayStartupNotificationMenu" xml:space="preserve">
+    <value>Display startup notification</value>
+  </data>
+  <data name="DownloadAndInstallQuestion" xml:space="preserve">
+    <value>Download and install new version now?</value>
+  </data>
+  <data name="ExitMenu" xml:space="preserve">
+    <value>Exit WeekNumber Lite</value>
+  </data>
+  <data name="FailedAutoInstall" xml:space="preserve">
+    <value>Failed to download and run the installer automatically.</value>
+  </data>
+  <data name="FailedToChangeIconResolution" xml:space="preserve">
+    <value>Failed to update icon resolution.</value>
+  </data>
+  <data name="FailedToCheckUpdateNoInternet" xml:space="preserve">
+    <value>Failed to perform version check, cannot find an active internet connection.</value>
+  </data>
+  <data name="FailedToDownloadNewVersion" xml:space="preserve">
+    <value>Failed to download new version.</value>
+  </data>
+  <data name="FailedToNotifyWindowsOfTaskbarIconSizeChange" xml:space="preserve">
+    <value>Could not inform Windows about change of taskbar icon size.
+
+Please report to feedback@voltura.se!</value>
+  </data>
+  <data name="FailedToPerformVersionCheck" xml:space="preserve">
+    <value>Failed to perform version check.</value>
+  </data>
+  <data name="FailedToSetIcon" xml:space="preserve">
+    <value>Could not set Icon. 
+
+Please report to feedback@voltura.se!</value>
+  </data>
+  <data name="FailedToStartInstaller" xml:space="preserve">
+    <value>Failed to start the installer automatically.</value>
+  </data>
+  <data name="FailedToUpdateCalendarWeekRule" xml:space="preserve">
+    <value>Could not calendar week rule setting. 
+
+Please report to feedback@voltura.se!</value>
+  </data>
+  <data name="FailedToUpdateColor" xml:space="preserve">
+    <value>Could not update color.</value>
+  </data>
+  <data name="FailedToUpdateDayOfWeek" xml:space="preserve">
+    <value>Could not update first day of week setting.
+
+Please report to feedback@voltura.se!</value>
+  </data>
+  <data name="FailedToUpdateRegistry" xml:space="preserve">
+    <value>Could not update registry.
+
+Please report to feedback@voltura.se!</value>
+  </data>
+  <data name="FirstDayMenu" xml:space="preserve">
+    <value>First Day</value>
+  </data>
+  <data name="FirstDayOfWeekMenu" xml:space="preserve">
+    <value>First Day Of Week</value>
+  </data>
+  <data name="FirstFourDayWeekMenu" xml:space="preserve">
+    <value>First Four Day Week</value>
+  </data>
+  <data name="FirstFullWeekMenu" xml:space="preserve">
+    <value>First Full Week</value>
+  </data>
+  <data name="IconForeground" xml:space="preserve">
+    <value>IconForeground</value>
+    <comment>Setting, do not change</comment>
+  </data>
+  <data name="IconForegroundBlue" xml:space="preserve">
+    <value>IconForegroundBlue</value>
+    <comment>Setting, do not change</comment>
+  </data>
+  <data name="IconForegroundGreen" xml:space="preserve">
+    <value>IconForegroundGreen</value>
+    <comment>Setting, do not change</comment>
+  </data>
+  <data name="IconForegroundMenu" xml:space="preserve">
+    <value>Foreground</value>
+    <comment>Setting, do not change</comment>
+  </data>
+  <data name="IconForegroundRed" xml:space="preserve">
+    <value>IconForegroundRed</value>
+    <comment>Setting, do not change</comment>
+  </data>
+  <data name="FridayMenu" xml:space="preserve">
+    <value>Friday</value>
+  </data>
+  <data name="Green" xml:space="preserve">
+    <value>Green</value>
+    <comment>Setting, do not change</comment>
+  </data>
+  <data name="Icon" xml:space="preserve">
+    <value>Icon</value>
+  </data>
+  <data name="Icon128" xml:space="preserve">
+    <value>128x128</value>
+  </data>
+  <data name="Icon16" xml:space="preserve">
+    <value>16x16</value>
+  </data>
+  <data name="Icon20" xml:space="preserve">
+    <value>20x20</value>
+  </data>
+  <data name="Icon24" xml:space="preserve">
+    <value>24x24</value>
+  </data>
+  <data name="Icon256" xml:space="preserve">
+    <value>256x256</value>
+  </data>
+  <data name="Icon32" xml:space="preserve">
+    <value>32x32</value>
+  </data>
+  <data name="Icon40" xml:space="preserve">
+    <value>40x40</value>
+  </data>
+  <data name="Icon48" xml:space="preserve">
+    <value>48x48</value>
+  </data>
+  <data name="Icon512" xml:space="preserve">
+    <value>512x512</value>
+  </data>
+  <data name="Icon64" xml:space="preserve">
+    <value>64x64</value>
+  </data>
+  <data name="IconResolution" xml:space="preserve">
+    <value>IconResolution</value>
+    <comment>Setting, do not change</comment>
+  </data>
+  <data name="IconResolutionMenu" xml:space="preserve">
+    <value>Icon resolution</value>
+  </data>
+  <data name="InstalledVersion" xml:space="preserve">
+    <value>Your version:</value>
+  </data>
+  <data name="LatestVersionInstalled" xml:space="preserve">
+    <value>You have the latest version!</value>
+  </data>
+  <data name="MaxLogFileSizeInMB" xml:space="preserve">
+    <value>MaxLogFileSizeInMB</value>
+    <comment>Setting, do not change</comment>
+  </data>
+  <data name="MondayMenu" xml:space="preserve">
+    <value>Monday</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>Month</value>
+  </data>
+  <data name="NewVersionAvailable" xml:space="preserve">
+    <value>There is a new version available!</value>
+  </data>
+  <data name="NotImplementedYet" xml:space="preserve">
+    <value>Sorry, this function is not implemented yet.</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="OpenApplicationWebPageMenu" xml:space="preserve">
+    <value>Open application web page</value>
+  </data>
+  <data name="Red" xml:space="preserve">
+    <value>Red</value>
+    <comment>Setting, do not change</comment>
+  </data>
+  <data name="ResetColors" xml:space="preserve">
+    <value>Colors reset</value>
+  </data>
+  <data name="ResetColorsMenu" xml:space="preserve">
+    <value>Reset colors</value>
+  </data>
+  <data name="SaturdayMenu" xml:space="preserve">
+    <value>Saturday</value>
+  </data>
+  <data name="SaveIconMenu" xml:space="preserve">
+    <value>Save icon...</value>
+  </data>
+  <data name="SelectBackgroundColor" xml:space="preserve">
+    <value>Please select background color</value>
+  </data>
+  <data name="SelectDate" xml:space="preserve">
+    <value>Please select date
+to show week number</value>
+  </data>
+  <data name="SelectForegroundColor" xml:space="preserve">
+    <value>Please select foreground color</value>
+  </data>
+  <data name="SeparatorMenu" xml:space="preserve">
+    <value>-</value>
+    <comment>Separator character, do not change</comment>
+  </data>
+  <data name="SettingsMenu" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="ShowLog" xml:space="preserve">
+    <value>ShowLog</value>
+  </data>
+  <data name="ShowLogMenu" xml:space="preserve">
+    <value>Show application log</value>
+  </data>
+  <data name="UseSilentNotifications" xml:space="preserve">
+    <value>UseSilentNotifications</value>
+    <comment>Setting, do not change</comment>
+  </data>
+  <data name="UseSilentNotificationsMenu" xml:space="preserve">
+    <value>Use silent notifications</value>
+  </data>
+  <data name="NotificationsMenu" xml:space="preserve">
+    <value>Notifications</value>
+  </data>
+  <data name="StartupMessageText" xml:space="preserve">
+    <value>Right-click on icon in the system 
+tray for features and settings</value>
+  </data>
+  <data name="StartWithWindows" xml:space="preserve">
+    <value>StartWithWindows</value>
+    <comment>Setting, do not change</comment>
+  </data>
+  <data name="StartWithWindowsMenu" xml:space="preserve">
+    <value>Start with Windows</value>
+  </data>
+  <data name="SundayMenu" xml:space="preserve">
+    <value>Sunday</value>
+  </data>
+  <data name="SwitchToLargeTaskbarButtonsMenu" xml:space="preserve">
+    <value>Use large taskbar</value>
+  </data>
+  <data name="SwitchToSmallTaskbarButtonsMenu" xml:space="preserve">
+    <value>Use small taskbar</value>
+  </data>
+  <data name="ThursdayMenu" xml:space="preserve">
+    <value>Thursday</value>
+  </data>
+  <data name="TuesdayMenu" xml:space="preserve">
+    <value>Tuesday</value>
+  </data>
+  <data name="UnhandledException" xml:space="preserve">
+    <value>Something went wrong. 
+
+Please report to feedback@voltura.se!</value>
+  </data>
+  <data name="UseApplicationLog" xml:space="preserve">
+    <value>UseApplicationLog</value>
+    <comment>Setting, do not change</comment>
+  </data>
+  <data name="UseApplicationLogMenu" xml:space="preserve">
+    <value>Use application log</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>version</value>
+  </data>
+  <data name="WednesdayMenu" xml:space="preserve">
+    <value>Wednesday</value>
+  </data>
+  <data name="Week" xml:space="preserve">
+    <value>Week </value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>Year</value>
+  </data>
+  <data name="CalendarSettingsMenu" xml:space="preserve">
+    <value>Calendar</value>
+  </data>
+  <data name="IconMenu" xml:space="preserve">
+    <value>Icon</value>
+  </data>
+  <data name="DisplayWeekChangedNotification" xml:space="preserve">
+    <value>DisplayWeekChangedNotification</value>
+    <comment>Setting, do not change</comment>
+  </data>
+  <data name="DisplayWeekChangedNotificationMenu" xml:space="preserve">
+    <value>Display new week notification</value>
+  </data>
+  <data name="CloseAppAndManuallyRun" xml:space="preserve">
+    <value>Close this application and manually run</value>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>information</value>
+  </data>
+  <data name="InvalidChecksumCouldNotAutoInstall" xml:space="preserve">
+    <value>Installer checksum incorrect, could not install automatically.</value>
+  </data>
+  <data name="ToUpdateTheApplication" xml:space="preserve">
+    <value>to update the application.</value>
+  </data>
+  <data name="TryDownloadingManuallyFromThisAddress" xml:space="preserve">
+    <value>Try manually downloading it via a web browser from this address:</value>
+  </data>
+  <data name="UnableToParse" xml:space="preserve">
+    <value>Unable to parse</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>en-US</value>
+    <comment>Setting, do not change</comment>
+  </data>
+  <data name="EnglishMenu" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Language</value>
+    <comment>Setting, do not change</comment>
+  </data>
+  <data name="LanguageMenu" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="ProductName" xml:space="preserve">
+    <value>WeekNumber Lite by Voltura AB</value>
+  </data>
+  <data name="Swedish" xml:space="preserve">
+    <value>sv-SE</value>
+    <comment>Setting, do not change</comment>
+  </data>
+  <data name="SwedishMenu" xml:space="preserve">
+    <value>Svenska</value>
+  </data>
+  <data name="CompositingQuality" xml:space="preserve">
+    <value>CompositingQuality</value>
+    <comment>Setting, do not change</comment>
+  </data>
+  <data name="CompositingQualityAssumeLinearMenu" xml:space="preserve">
+    <value>Assume Linear</value>
+    <comment>4</comment>
+  </data>
+  <data name="CompositingQualityDefaultMenu" xml:space="preserve">
+    <value>Default</value>
+    <comment>0</comment>
+  </data>
+  <data name="CompositingQualityGammaCorrectedMenu" xml:space="preserve">
+    <value>Gamma Corrected</value>
+    <comment>3</comment>
+  </data>
+  <data name="CompositingQualityHighQualityMenu" xml:space="preserve">
+    <value>High Quality</value>
+    <comment>2</comment>
+  </data>
+  <data name="CompositingQualityHighSpeedMenu" xml:space="preserve">
+    <value>High Speed</value>
+    <comment>1</comment>
+  </data>
+  <data name="CompositingQualityMenu" xml:space="preserve">
+    <value>Compositing Quality</value>
+  </data>
+  <data name="GraphicsSettingsMenu" xml:space="preserve">
+    <value>Graphics settings</value>
+  </data>
+  <data name="InterpolationMode" xml:space="preserve">
+    <value>InterpolationMode</value>
+    <comment>Setting, do not change</comment>
+  </data>
+  <data name="InterpolationModeBicubicMenu" xml:space="preserve">
+    <value>Bicubic</value>
+    <comment>4</comment>
+  </data>
+  <data name="InterpolationModeBilinearMenu" xml:space="preserve">
+    <value>Bilinear</value>
+    <comment>3</comment>
+  </data>
+  <data name="InterpolationModeDefaultMenu" xml:space="preserve">
+    <value>Default</value>
+    <comment>0</comment>
+  </data>
+  <data name="InterpolationModeHighMenu" xml:space="preserve">
+    <value>High</value>
+    <comment>2</comment>
+  </data>
+  <data name="InterpolationModeHighQualityBicubicMenu" xml:space="preserve">
+    <value>High Quality Bicubic</value>
+    <comment>7</comment>
+  </data>
+  <data name="InterpolationModeHighQualityBilinearMenu" xml:space="preserve">
+    <value>High Quality Bilinear</value>
+    <comment>6</comment>
+  </data>
+  <data name="InterpolationModeLowMenu" xml:space="preserve">
+    <value>Low</value>
+    <comment>1</comment>
+  </data>
+  <data name="InterpolationModeMenu" xml:space="preserve">
+    <value>Interpolation Mode</value>
+  </data>
+  <data name="InterpolationModeNearestNeighborMenu" xml:space="preserve">
+    <value>Nearest Neighbor</value>
+    <comment>5</comment>
+  </data>
+  <data name="SmoothingAntiAliasMenu" xml:space="preserve">
+    <value>Anti Alias</value>
+    <comment>4 Specifies antialiased rendering.</comment>
+  </data>
+  <data name="SmoothingMode" xml:space="preserve">
+    <value>SmoothingMode</value>
+    <comment>Setting, do not change</comment>
+  </data>
+  <data name="SmoothingModeDefaultMenu" xml:space="preserve">
+    <value>Default</value>
+    <comment>0 Specifies no antialiasing.</comment>
+  </data>
+  <data name="SmoothingModeHighQualityMenu" xml:space="preserve">
+    <value>High Quality</value>
+    <comment>2 Specifies antialiased rendering.</comment>
+  </data>
+  <data name="SmoothingModeHighSpeedMenu" xml:space="preserve">
+    <value>High Speed</value>
+    <comment>1 Specifies no antialiasing.</comment>
+  </data>
+  <data name="SmoothingModeMenu" xml:space="preserve">
+    <value>Smoothing mode</value>
+  </data>
+  <data name="SmoothingModeNoneMenu" xml:space="preserve">
+    <value>None</value>
+    <comment>3 Specifies no antialiasing.</comment>
+  </data>
+  <data name="TextContrast" xml:space="preserve">
+    <value>TextContrast</value>
+    <comment>Setting, do not change</comment>
+  </data>
+  <data name="TextContrast1Menu" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="TextContrast2Menu" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="TextContrast3Menu" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="TextContrast4Menu" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="TextContrast5Menu" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="TextContrastMenu" xml:space="preserve">
+    <value>Text Contrast</value>
+    <comment>The gamma correction value used for rendering antialiased and ClearType text.</comment>
+  </data>
+  <data name="ExportSettingsMenu" xml:space="preserve">
+    <value>Export settings...</value>
+  </data>
+  <data name="FailedToExportSettings" xml:space="preserve">
+    <value>Failed to export settings!</value>
+  </data>
+  <data name="FailedToImportSettings" xml:space="preserve">
+    <value>Failed to import settings!</value>
+  </data>
+  <data name="ImportSettingsMenu" xml:space="preserve">
+    <value>Import settings...</value>
+  </data>
+  <data name="SettingsExported" xml:space="preserve">
+    <value>Settings successfully exported!</value>
+  </data>
+  <data name="SettingsImported" xml:space="preserve">
+    <value>Settings successfully imported!</value>
+  </data>
+  <data name="IconBackgroundAlpha" xml:space="preserve">
+    <value>IconBackgroundAlpha</value>
+    <comment>Setting, do not change</comment>
+  </data>
+  <data name="IconBackgroundAlphaMenu" xml:space="preserve">
+    <value>Use transparent background</value>
+  </data>
+  <data name="APPLICATION_URL" xml:space="preserve">
+    <value>https://voltura.github.io/WeekNumberLite/</value>
+  </data>
+</root>
