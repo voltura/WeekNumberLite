@@ -15,7 +15,7 @@ on:
 jobs:
   analyze:
     name: Analyze
-    runs-on: windows-10
+    runs-on: windows-2022
     permissions:
       actions: write
       contents: write
