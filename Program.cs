@@ -14,7 +14,7 @@ namespace WeekNumberLite
     {
         #region Private variable to allow only one instance of application
 
-        private static readonly Mutex Mutex = new Mutex(true, "550adc75-8afb-4813-ac91-8c8c6cb681ae");
+        private static readonly Mutex Mutex = new Mutex(true, "88D1C6E0-96C8-4BB3-BA08-ACEFDC90A023");
 
         #endregion Private variable to allow only one instance of application
 
