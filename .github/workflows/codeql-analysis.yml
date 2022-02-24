@@ -15,7 +15,7 @@ on:
 jobs:
   analyze:
     name: Analyze
-    runs-on: windows-2022
+    runs-on: windows-2019
     permissions:
       actions: write
       contents: write
@@ -49,8 +49,8 @@ jobs:
     - name: Debug clean build
       run:  msbuild WeekNumberLite.sln /t:rebuild
       
-    - name: Autobuild
-      uses: github/codeql-action/autobuild@v1
+    #- name: Autobuild
+#      uses: github/codeql-action/autobuild@v1
       
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
