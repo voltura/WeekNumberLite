@@ -53,10 +53,7 @@ namespace WeekNumberLite
         public bool WasChanged()
         {
             bool changed = _week != Current();
-            if (changed)
-            {
-                _week = Current();
-            }
+            if (changed) _week = Current();
             return changed;
         }
 
@@ -74,12 +71,8 @@ namespace WeekNumberLite
             CalendarWeekRule calendarWeekRule;
             dayOfWeek = DayOfWeek.Monday;
             calendarWeekRule = CalendarWeekRule.FirstFourDayWeek;
-            int week = CultureInfo.CurrentCulture.Calendar.
-                GetWeekOfYear(DateTime.Now, calendarWeekRule, dayOfWeek);
-            if (week == 53 && (!YearHas53Weeks(DateTime.Now.Year)))
-            {
-                week = 1;
-            }
+            int week = CultureInfo.CurrentCulture.Calendar.GetWeekOfYear(DateTime.Now, calendarWeekRule, dayOfWeek);
+            if (week == 53 && (!YearHas53Weeks(DateTime.Now.Year))) week = 1;
             return week;
         }
 
@@ -95,10 +88,7 @@ namespace WeekNumberLite
         private static int Weeks(int year)
         {
             int w = 52;
-            if (P(year) == 4 || P(year - 1) == 3)
-            {
-                w++;
-            }
+            if (P(year) == 4 || P(year - 1) == 3) w++;
             return w; // returns the number of weeks in that year
         }
 

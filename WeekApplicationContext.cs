@@ -28,7 +28,6 @@ namespace WeekNumberLite
         {
             try
             {
-
                 Application.ApplicationExit += OnApplicationExit;
                 _currentWeek = Week.Current();
                 Gui = new TaskbarGui(_currentWeek);
@@ -37,7 +36,6 @@ namespace WeekNumberLite
             catch (Exception ex)
             {
                 _timer?.Stop();
-
                 Message.Show(Resources.UnhandledException, ex);
                 Application.Exit();
             }
@@ -51,16 +49,9 @@ namespace WeekNumberLite
         {
             get
             {
-                if (_timer != null)
-                {
-                    return _timer;
-                }
+                if (_timer != null) return _timer;
                 int calculatedInterval = 86400000 - ((DateTime.Now.Hour * 3600000) + (DateTime.Now.Minute * 60000) + (DateTime.Now.Second * 1000));
-                Timer timer = new Timer
-                {
-                    Interval = calculatedInterval,
-                    Enabled = true
-                };
+                Timer timer = new Timer { Interval = calculatedInterval, Enabled = true };
                 timer.Tick += OnTimerTick;
                 return timer;
             }
@@ -72,7 +63,6 @@ namespace WeekNumberLite
 
         private void OnApplicationExit(object sender, EventArgs e)
         {
-
             Cleanup(false);
         }
 
@@ -83,10 +73,7 @@ namespace WeekNumberLite
 
         private void UpdateIcon()
         {
-            if (_currentWeek == Week.Current())
-            {
-                return;
-            }
+            if (_currentWeek == Week.Current()) return;
             _timer?.Stop();
             Application.DoEvents();
             try
@@ -114,15 +101,11 @@ namespace WeekNumberLite
 
         private void Cleanup(bool forceExit = true)
         {
-
             _timer?.Stop();
             _timer?.Dispose();
             Gui?.Dispose();
             Gui = null;
-            if (forceExit)
-            {
-                Application.Exit();
-            }
+            if (forceExit) Application.Exit();
         }
 
         #endregion Private methods

@@ -40,10 +40,7 @@ namespace WeekNumberLite
 
         internal static void CleanupIcon(ref Icon icon)
         {
-            if (icon is null)
-            {
-                return;
-            }
+            if (icon is null) return;
             NativeMethods.DestroyIcon(icon.Handle);
             icon.Dispose();
         }
@@ -54,24 +51,19 @@ namespace WeekNumberLite
 
         private static void DrawBackgroundOnGraphics(Graphics graphics, int size = 0)
         {
-            if (size == 0)
-            {
-                size = _iconSize;
-            }
+            if (size == 0) size = _iconSize;
             Color backgroundColor = Color.Black;
-            Color foregroundColor = Color.White;
+            Color foregroundColor = Color.LightGray;
             using (SolidBrush foregroundBrush = new SolidBrush(foregroundColor))
             using (SolidBrush backgroundBrush = new SolidBrush(backgroundColor))
             {
-                float inset = (float)System.Math.Abs(size * .03125);
+                float inset = (float)Math.Abs(size * .03125);
                 graphics?.FillRectangle(backgroundBrush, inset, inset, size - inset, size - inset);
                 using (Pen pen = new Pen(foregroundColor, inset * 2))
-                {
                     graphics?.DrawRectangle(pen, inset, inset, size - inset * 2, size - inset * 2);
-                }
-                float leftInset = (float)System.Math.Abs(size * .15625);
+                float leftInset = (float)Math.Abs(size * .15625);
                 graphics?.FillRectangle(foregroundBrush, leftInset, inset / 2, inset * 3, inset * 5);
-                float rightInset = (float)System.Math.Abs(size * .75);
+                float rightInset = (float)Math.Abs(size * .75);
                 graphics?.FillRectangle(foregroundBrush, rightInset, inset / 2, inset * 3, inset * 5);
             }
         }
@@ -79,9 +71,9 @@ namespace WeekNumberLite
         private static void DrawWeekNumberLiteOnGraphics(int WeekNumberLite, Graphics graphics, int size = 0)
         {
             if (size == 0) size = _iconSize;
-            float fontSize = (float)System.Math.Abs(size * .78125);
-            float insetX = (float)-(size > (int)IconSize.Icon16 ? System.Math.Abs(fontSize * .12) : System.Math.Abs(fontSize * .07));
-            float insetY = (float)(size > (int)IconSize.Icon16 ? System.Math.Abs(fontSize * .2) : System.Math.Abs(fontSize * .08));
+            float fontSize = (float)Math.Abs(size * .78125);
+            float insetX = (float)-(size > (int)IconSize.Icon16 ? Math.Abs(fontSize * .12) : Math.Abs(fontSize * .07));
+            float insetY = (float)(size > (int)IconSize.Icon16 ? Math.Abs(fontSize * .2) : Math.Abs(fontSize * .08));
             Color foregroundColor = Color.White;
             using (Font font = new Font(FontFamily.GenericMonospace, fontSize, FontStyle.Bold,
                 GraphicsUnit.Pixel, 0, false))

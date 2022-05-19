@@ -131,7 +131,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.sv-SE.resx</DependentUpon>
     </Compile>
-    <Compile Include="Settings.cs" />
     <Compile Include="TaskbarGui.cs" />
     <Compile Include="Week.cs" />
     <Compile Include="WeekApplicationContext.cs" />

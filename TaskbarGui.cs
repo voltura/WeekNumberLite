@@ -43,10 +43,7 @@ namespace WeekNumberLite
         /// Updates icon on GUI with given week number
         /// </summary>
         /// <param name="weekNumber">The week number to display on icon</param>
-        public void UpdateIcon(int weekNumber)
-        {
-            UpdateIcon(weekNumber, ref _notifyIcon);
-        }
+        public void UpdateIcon(int weekNumber) => UpdateIcon(weekNumber, ref _notifyIcon);
 
         #endregion Public UpdateIcon method
 
@@ -54,14 +51,11 @@ namespace WeekNumberLite
 
         private void UpdateIcon(int weekNumber, ref NotifyIcon notifyIcon)
         {
-
             try
             {
                 string weekDayPrefix = string.Empty;
                 if (System.Threading.Thread.CurrentThread.CurrentUICulture.Name == Resources.Swedish)
-                {
                     weekDayPrefix = Message.SWEDISH_DAY_OF_WEEK_PREFIX[(int)DateTime.Now.DayOfWeek];
-                }
                 notifyIcon.Text = $"{Resources.Week} {weekNumber}\r\n{weekDayPrefix}{DateTime.Now.ToLongDateString()}";
                 System.Drawing.Icon prevIcon = notifyIcon.Icon;
                 notifyIcon.Icon = WeekIcon.GetIcon(weekNumber);
@@ -69,10 +63,7 @@ namespace WeekNumberLite
             }
             finally
             {
-                if (_latestWeek != weekNumber)
-                {
-                    _latestWeek = weekNumber;
-                }
+                if (_latestWeek != weekNumber) _latestWeek = weekNumber;
             }
         }
 
@@ -80,10 +71,7 @@ namespace WeekNumberLite
 
         #region Private helper property to create NotifyIcon
 
-        private static NotifyIcon GetNotifyIcon(ContextMenu contextMenu)
-        {
-            return new NotifyIcon { Visible = true, ContextMenu = contextMenu };
-        }
+        private static NotifyIcon GetNotifyIcon(ContextMenu contextMenu) => new NotifyIcon { Visible = true, ContextMenu = contextMenu };
 
         #endregion Private helper property to create NotifyIcon
 
@@ -100,32 +88,26 @@ namespace WeekNumberLite
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!disposing)
-            {
-                return;
-            }
+            if (!disposing) return;
             CleanupNotifyIcon();
             _contextMenu.Dispose();
         }
 
         private void CleanupNotifyIcon()
         {
-            if (_notifyIcon != null)
+            if (_notifyIcon is null) return;
+            _notifyIcon.Visible = false;
+            if (_notifyIcon.Icon != null)
             {
-                _notifyIcon.Visible = false;
-                if (_notifyIcon.Icon != null)
-                {
-                    NativeMethods.DestroyIcon(_notifyIcon.Icon.Handle);
-                    _notifyIcon.Icon?.Dispose();
-                }
-                _notifyIcon.ContextMenu?.MenuItems.Clear();
-                _notifyIcon.ContextMenu?.Dispose();
-                _notifyIcon.Dispose();
-                _notifyIcon = null;
+                NativeMethods.DestroyIcon(_notifyIcon.Icon.Handle);
+                _notifyIcon.Icon?.Dispose();
             }
+            _notifyIcon.ContextMenu?.MenuItems.Clear();
+            _notifyIcon.ContextMenu?.Dispose();
+            _notifyIcon.Dispose();
+            _notifyIcon = null;
         }
 
         #endregion IDisposable methods
     }
-
 }

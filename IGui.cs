@@ -15,6 +15,5 @@
         /// Disposes GUI
         /// </summary>
         void Dispose();
-
     }
 }

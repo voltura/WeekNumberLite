@@ -23,24 +23,17 @@ namespace WeekNumberLite
         [STAThread]
         private static void Main()
         {
-            if (!Mutex.WaitOne(TimeSpan.Zero, true))
-            {
-                return;
-            }
+            if (!Mutex.WaitOne(TimeSpan.Zero, true)) return;
             WeekApplicationContext context = null;
             try
             {
-                //Settings.StartWithWindows = MessageBox.Show("Start automatically with Windows?", "Start with Windows?", MessageBoxButtons.YesNo) == DialogResult.Yes;
                 AppDomain.CurrentDomain.UnhandledException += UnhandledExceptionTrapper;
                 SetGCSettings();
                 Application.EnableVisualStyles();
                 Application.VisualStyleState = VisualStyleState.ClientAndNonClientAreasEnabled;
                 Application.SetCompatibleTextRenderingDefault(false);
                 context = new WeekApplicationContext();
-                if (context?.Gui != null)
-                {
-                    Application.Run(context);
-                }
+                if (context?.Gui != null) Application.Run(context);
             }
             finally
             {

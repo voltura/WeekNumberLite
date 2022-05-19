@@ -19,7 +19,6 @@ namespace WeekNumberLite
 
         internal WeekNumberLiteContextMenu()
         {
-
             CreateContextMenu();
         }
 
@@ -29,13 +28,11 @@ namespace WeekNumberLite
 
         private static void ExitMenuClick(object o, EventArgs e)
         {
-
             Application.Exit();
         }
 
         private void AboutClick(object o, EventArgs e)
         {
-
             MenuItem mi = (MenuItem)o;
             try
             {
@@ -54,13 +51,9 @@ namespace WeekNumberLite
 
         internal void CreateContextMenu()
         {
-
             ContextMenu = new ContextMenu(new MenuItem[2]
             {
-                new MenuItem(Resources.AboutMenu, AboutClick)
-                {
-                    DefaultItem = true
-                },
+                new MenuItem(Resources.AboutMenu, AboutClick) { DefaultItem = true },
                 new MenuItem(Resources.ExitMenu, ExitMenuClick)
             });
         }
@@ -71,10 +64,7 @@ namespace WeekNumberLite
 
         private static void EnableMenuItem(MenuItem mi)
         {
-            if (mi != null)
-            {
-                mi.Enabled = true;
-            }
+            if (mi != null) mi.Enabled = true;
         }
 
         #endregion Private helper methods for menu items
@@ -92,16 +82,12 @@ namespace WeekNumberLite
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!disposing)
-            {
-                return;
-            }
+            if (!disposing) return;
             CleanupContextMenu();
         }
 
         private void CleanupContextMenu()
         {
-
             ContextMenu?.Dispose();
             ContextMenu = null;
         }
