@@ -58,7 +58,7 @@ namespace WeekNumberLite
             {
                 size = _iconSize;
             }
-            Color backgroundColor = Color.Transparent;
+            Color backgroundColor = Color.Black;
             Color foregroundColor = Color.White;
             using (SolidBrush foregroundBrush = new SolidBrush(foregroundColor))
             using (SolidBrush backgroundBrush = new SolidBrush(backgroundColor))
