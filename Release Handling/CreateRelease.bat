@@ -27,7 +27,7 @@ IF "%SCRIPT_PARAMETER%" EQU "UP" SET "UPDATE_VER=TRUE" && SET "PUBLISH_REL=TRUE"
 SET "SCRIPT_DIR=%~dp0"
 SET "SCRIPT_DIR=%SCRIPT_DIR:~0,-1%"
 SET "RELEASE_MANAGER=%SCRIPT_DIR%\ReleaseManager.bat"
-SET "NSIS_SCRIPT_FOLDER=%SCRIPT_DIR%\..\NSIS Installation"
+SET "PUBLISH_FOLDER=%SCRIPT_DIR%\..\bin\x86\Release"
 IF "%SCRIPT_PARAMETER%" EQU "" (
 	START "Release Manager" "%RELEASE_MANAGER%"
 	EXIT
@@ -70,7 +70,7 @@ COLOR 1F
 CLS
 CALL :UPDATE_VERSION
 CALL :COMPILE_RELEASE
-CALL :CREATE_INSTALLER_AND_FILES_FOR_RELEASE
+CALL :CREATE_FILES_FOR_RELEASE
 CALL :PUBLISH_RELEASE
 CALL :DISP_MSG "All tasks completed successfully, launching the Release Manager..." 2
 START "Release Manager" "%RELEASE_MANAGER%" 0
@@ -79,93 +79,67 @@ EXIT
 :: ==========================
 :: Functions
 :: ==========================
-:CREATE_INSTALLER_AND_FILES_FOR_RELEASE
-CALL :DISP_MSG "Compiling installer, please be patient..." 0
-START "Compile Installer" /MIN /WAIT "%NSIS_SCRIPT_FOLDER%\CompileInstaller.bat" %VERSION%
-SET RESULT=%ERRORLEVEL%
-CD /D "%NSIS_SCRIPT_FOLDER%"
-IF "%RESULT%" EQU "0" (
-	CALL :DISP_MSG "Installer successfully compiled." 2
-	CALL :GENERATE_MD5 WeekNumber_Lite_%VERSION%_Installer.exe
-	CALL :COMPRESS_INSTALLER
-	CALL :GENERATE_MD5 WeekNumber_Lite_%VERSION%_Installer.7z
+:CREATE_FILES_FOR_RELEASE
+CD /D "%PUBLISH_FOLDER%"
+	CALL :DISP_MSG "Creating files for release." 2
+	CALL :GENERATE_MD5 WeekNumberLite.exe
 	CALL :COMPRESS_WeekNumber_Lite_ZIP
-	CALL :GENERATE_MD5 WeekNumber_Lite.zip
-	CALL :GENERATE_VERSION_INFO %VERSION% WeekNumber_Lite_%VERSION%_Installer.exe
+	CALL :GENERATE_MD5 WeekNumberLite.zip
+	CALL :GENERATE_VERSION_INFO %VERSION% WeekNumberLite.exe
 	CALL :COPY_RELEASE
-	DEL /F /Q "%NSIS_SCRIPT_FOLDER%\WeekNumber_Lite_%VERSION%_Installer.log" >NUL
 	CALL :DISP_MSG "Generated all release files successfully." 0
-) ELSE (
-	NOTEPAD.EXE "%NSIS_SCRIPT_FOLDER%\WeekNumber_Lite_%VERSION%_Installer.log"
-	CALL :ERROR_MESSAGE_EXIT "Failed to compile installer." %RESULT%
-)
 CD /D "%SCRIPT_DIR%"
 GOTO :EOF
 
 :GENERATE_MD5
 CALL :DISP_MSG "Generating MD5 for '%1'..." 0
 SET "MD5="
-FOR /F "skip=1" %%G IN ('CertUtil -hashfile "%NSIS_SCRIPT_FOLDER%\%1" MD5') DO (
+FOR /F "skip=1" %%G IN ('CertUtil -hashfile "%PUBLISH_FOLDER%\%1" MD5') DO (
 	SET "MD5=%%G"
 	GOTO :CREATE_MD5 %1
 )
 CALL :ERROR_MESSAGE_EXIT "Failed to generate MD5 for '%1'." 10
 :CREATE_MD5
 SET FILE_NAME=%1
-ECHO %MD5%  %FILE_NAME%> "%NSIS_SCRIPT_FOLDER%\%FILE_NAME%.MD5"
-ECHO.>> "%NSIS_SCRIPT_FOLDER%\%FILE_NAME%.MD5"
+ECHO %MD5%  %FILE_NAME%> "%PUBLISH_FOLDER%\%FILE_NAME%.MD5"
+ECHO.>> "%PUBLISH_FOLDER%\%FILE_NAME%.MD5"
 CALL :DISP_MSG "Generated MD5 checksum file '%FILE_NAME%.MD5'." 0
 GOTO :EOF
 
-:COMPRESS_INSTALLER
-IF NOT EXIST "%SEVEN_ZIP_FULLPATH%" CALL :ERROR_MESSAGE_EXIT "Compress tool not found, cannot compress installer." 20
-CD /D %NSIS_SCRIPT_FOLDER%
-"%SEVEN_ZIP_FULLPATH%" a -t7z -y WeekNumber_Lite_%VERSION%_Installer.7z WeekNumber_Lite_%VERSION%_Installer.exe WeekNumber_Lite_%VERSION%_Installer.exe.MD5 >NUL
-SET SEVEN_ZIP_RESULT=%ERRORLEVEL%
-CD /D %SCRIPT_DIR%
-IF "%SEVEN_ZIP_RESULT%" NEQ "0" CALL :ERROR_MESSAGE_EXIT "Failed to compress installer" %SEVEN_ZIP_RESULT%
-GOTO :EOF
-
 :COMPRESS_WeekNumber_Lite_ZIP
-CALL :DISP_MSG "Archiving installer..." 0
+CALL :DISP_MSG "Archiving WeekNumber Lite..." 0
 IF NOT EXIST "%SEVEN_ZIP_FULLPATH%" CALL :ERROR_MESSAGE_EXIT "7-zip not found '%SEVEN_ZIP_FULLPATH%', cannot compress installer." 30
-CD /D "%NSIS_SCRIPT_FOLDER%"
-"%SEVEN_ZIP_FULLPATH%" a -tzip -y WeekNumber_Lite.zip WeekNumber_Lite_%VERSION%_Installer.exe WeekNumber_Lite_%VERSION%_Installer.exe.MD5 >NUL
+CD /D "%PUBLISH_FOLDER%"
+"%SEVEN_ZIP_FULLPATH%" a -tzip -y WeekNumberLite.zip WeekNumberLite.exe WeekNumberLite.exe.MD5 WeekNumberLite.pdb WeekNumberLite.xml .\sv-SE\WeekNumberLite.resources.dll >NUL
 SET SEVEN_ZIP_RESULT=%ERRORLEVEL%
 CD /D "%SCRIPT_DIR%"
-IF "%SEVEN_ZIP_RESULT%" NEQ "0" CALL :ERROR_MESSAGE_EXIT "7-zip failed to generate 'WeekNumber_Lite.zip'." %SEVEN_ZIP_RESULT%
-CALL :DISP_MSG "Archiving installer completed." 0
+IF "%SEVEN_ZIP_RESULT%" NEQ "0" CALL :ERROR_MESSAGE_EXIT "7-zip failed to generate 'WeekNumberLite.zip'." %SEVEN_ZIP_RESULT%
+CALL :DISP_MSG "Archiving WeekNumber Lite completed." 0
 GOTO :EOF
 
 :GENERATE_VERSION_INFO
 CALL :DISP_MSG "Generating version info..." 0
-ECHO %1 %2> "%NSIS_SCRIPT_FOLDER%\VERSION.TXT"
-CALL :DISP_MSG "%NSIS_SCRIPT_FOLDER%\VERSION.TXT created" 0
+ECHO %1 %2> "%PUBLISH_FOLDER%\VERSION.TXT"
+CALL :DISP_MSG "%PUBLISH_FOLDER%\VERSION.TXT created" 0
 GOTO :EOF
 
 :COPY_RELEASE
 CALL :DISP_MSG "Copying release files to release folder..." 0
 MD "%SCRIPT_DIR%\..\Releases\%VERSION%" >NUL 2>&1
-IF NOT EXIST "%SCRIPT_DIR%\..\NSIS Installation\WeekNumber_Lite.zip" CALL :ERROR_MESSAGE_EXIT "WeekNumber_Lite.zip could not be copied" 40
-MOVE /Y "%SCRIPT_DIR%\..\NSIS Installation\WeekNumber_Lite.zip" "%SCRIPT_DIR%\..\Releases\%VERSION%\" >NUL 2>&1
-IF "%ERRORLEVEL%" NEQ "0" CALL :ERROR_MESSAGE_EXIT "Failed to move WeekNumber_Lite.zip" 50
-IF NOT EXIST "%SCRIPT_DIR%\..\NSIS Installation\WeekNumber_Lite.zip.MD5" CALL :ERROR_MESSAGE_EXIT "WeekNumber_Lite.zip.MD5 not found" 60
-MOVE /Y "%SCRIPT_DIR%\..\NSIS Installation\WeekNumber_Lite.zip.MD5" "%SCRIPT_DIR%\..\Releases\%VERSION%\" >NUL 2>&1
-IF "%ERRORLEVEL%" NEQ "0" CALL :ERROR_MESSAGE_EXIT "Failed to move WeekNumber_Lite.zip.MD5" 70
-IF NOT EXIST "%SCRIPT_DIR%\..\NSIS Installation\WeekNumber_Lite_%VERSION%_Installer.7z" CALL :ERROR_MESSAGE_EXIT "WeekNumber_Lite_%VERSION%_Installer.7z not found" 80
-MOVE /Y "%SCRIPT_DIR%\..\NSIS Installation\WeekNumber_Lite_%VERSION%_Installer.7z" "%SCRIPT_DIR%\..\Releases\%VERSION%\" >NUL 2>&1
-IF "%ERRORLEVEL%" NEQ "0" CALL :ERROR_MESSAGE_EXIT "Failed to move WeekNumber_Lite_%VERSION%_Installer.7z" 90
-IF NOT EXIST "%SCRIPT_DIR%\..\NSIS Installation\WeekNumber_Lite_%VERSION%_Installer.7z.MD5" CALL :ERROR_MESSAGE_EXIT "Failed, missing file" 100
-MOVE /Y "%SCRIPT_DIR%\..\NSIS Installation\WeekNumber_Lite_%VERSION%_Installer.7z.MD5" "%SCRIPT_DIR%\..\Releases\%VERSION%\" >NUL 2>&1
-IF "%ERRORLEVEL%" NEQ "0" CALL :ERROR_MESSAGE_EXIT "Move failed" 110
-IF NOT EXIST "%SCRIPT_DIR%\..\NSIS Installation\WeekNumber_Lite_%VERSION%_Installer.exe" GOTO :FAILED_COPY_RELEASE
-MOVE /Y "%SCRIPT_DIR%\..\NSIS Installation\WeekNumber_Lite_%VERSION%_Installer.exe" "%SCRIPT_DIR%\..\Releases\%VERSION%\" >NUL 2>&1
+IF NOT EXIST "%PUBLISH_FOLDER%\WeekNumberLite.zip" CALL :ERROR_MESSAGE_EXIT "WeekNumberLite.zip could not be copied" 40
+MOVE /Y "%PUBLISH_FOLDER%\WeekNumberLite.zip" "%SCRIPT_DIR%\..\Releases\%VERSION%\" >NUL 2>&1
+IF "%ERRORLEVEL%" NEQ "0" CALL :ERROR_MESSAGE_EXIT "Failed to move WeekNumberLite.zip" 50
+IF NOT EXIST "%PUBLISH_FOLDER%\WeekNumberLite.zip.MD5" CALL :ERROR_MESSAGE_EXIT "WeekNumberLite.zip.MD5 not found" 60
+MOVE /Y "%PUBLISH_FOLDER%\WeekNumberLite.zip.MD5" "%SCRIPT_DIR%\..\Releases\%VERSION%\" >NUL 2>&1
+IF "%ERRORLEVEL%" NEQ "0" CALL :ERROR_MESSAGE_EXIT "Failed to move WeekNumberLite.zip.MD5" 70
+IF NOT EXIST "%PUBLISH_FOLDER%\WeekNumberLite.exe" GOTO :FAILED_COPY_RELEASE
+MOVE /Y "%PUBLISH_FOLDER%\WeekNumberLite.exe" "%SCRIPT_DIR%\..\Releases\%VERSION%\" >NUL 2>&1
 IF "%ERRORLEVEL%" NEQ "0" CALL :ERROR_MESSAGE_EXIT "Copy failed" 120
-IF NOT EXIST "%SCRIPT_DIR%\..\NSIS Installation\WeekNumber_Lite_%VERSION%_Installer.exe.MD5" CALL :ERROR_MESSAGE_EXIT "Failed, missing file" 130
-MOVE /Y "%SCRIPT_DIR%\..\NSIS Installation\WeekNumber_Lite_%VERSION%_Installer.exe.MD5" "%SCRIPT_DIR%\..\Releases\%VERSION%\" >NUL 2>&1
-IF "%ERRORLEVEL%" NEQ "0" CALL :ERROR_MESSAGE_EXIT "Move failed" 140
-IF NOT EXIST "%SCRIPT_DIR%\..\NSIS Installation\VERSION.TXT" CALL :ERROR_MESSAGE_EXIT "Failed, missing file" 150
-MOVE /Y "%SCRIPT_DIR%\..\NSIS Installation\VERSION.TXT" "%SCRIPT_DIR%\..\Releases\%VERSION%\" >NUL 2>&1
+IF NOT EXIST "%PUBLISH_FOLDER%\WeekNumberLite.exe.MD5" GOTO :FAILED_COPY_RELEASE
+MOVE /Y "%PUBLISH_FOLDER%\WeekNumberLite.exe.MD5" "%SCRIPT_DIR%\..\Releases\%VERSION%\" >NUL 2>&1
+IF "%ERRORLEVEL%" NEQ "0" CALL :ERROR_MESSAGE_EXIT "Copy failed" 140
+IF NOT EXIST "%PUBLISH_FOLDER%\VERSION.TXT" CALL :ERROR_MESSAGE_EXIT "Failed, missing file" 150
+MOVE /Y "%PUBLISH_FOLDER%\VERSION.TXT" "%SCRIPT_DIR%\..\Releases\%VERSION%\" >NUL 2>&1
 IF "%ERRORLEVEL%" NEQ "0" CALL :ERROR_MESSAGE_EXIT "Failed to copy release files." 160
 GOTO :EOF
 
@@ -284,12 +258,10 @@ GOTO :EOF
 :UPLOAD_RELEASE_ASSETS
 CALL :DISP_MSG "Uploading release '%NAME%' assets to Github..." 1
 PUSHD "%SCRIPT_DIR%\..\Releases\%VERSION%"
-	CALL :UPLOAD_FILE WeekNumber_Lite.zip
-	CALL :UPLOAD_FILE WeekNumber_Lite.zip.MD5
-	CALL :UPLOAD_FILE WeekNumber_Lite_%VERSION%_Installer.7z
-	CALL :UPLOAD_FILE "WeekNumber_Lite_%VERSION%_Installer.7z.MD5"
-	CALL :UPLOAD_FILE "WeekNumber_Lite_%VERSION%_Installer.exe"
-	CALL :UPLOAD_FILE "WeekNumber_Lite_%VERSION%_Installer.exe.MD5"
+	CALL :UPLOAD_FILE WeekNumberLite.zip
+	CALL :UPLOAD_FILE WeekNumberLite.zip.MD5
+	CALL :UPLOAD_FILE WeekNumberLite.exe
+	CALL :UPLOAD_FILE WeekNumberLite.exe.MD5
 	CALL :UPLOAD_FILE VERSION.TXT
 POPD
 CALL :DISP_MSG "Upload completed." 0
